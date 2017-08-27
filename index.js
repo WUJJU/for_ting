@@ -3,8 +3,8 @@ var app=express();
 var path=require('path');
 
 app.get('/',(req,res)=>{
-	// res.sendFile(path.join(__dirname+'/Love.html'));
-	res.send('hello wolrd')
+	res.sendFile(path.join(__dirname+'/Love.html'));
+	// res.send('hello wolrd')
 })
 var server=app.listen(3000,process.argv[2],()=>{
 	var host=server.address().address;
