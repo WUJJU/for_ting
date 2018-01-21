@@ -24,16 +24,16 @@
                      <div id = "letter">
                              <div id="1st_letter">
                                  <image src = "./letter3.png"   width="50"
-                                 height="30">
+                                 height="30" id="letter1">
                                
                              </div><p></p>
                              <div id="2nd_letter">
                                     <image src = "./letter3.png"   width="50"
-                                 height="30">
+                                 height="30" id="letter2">
                              </div></br>
                              <div id="3rd_letter">
                                     <image src = "./letter3.png"   width="50"
-                                 height="30">
+                                 height="30" id="letter3">
                              </div>    
 
                         </div>   
@@ -44,7 +44,8 @@
                        <span class="say">Hello, 晓婷君:</span></br></br>
                        <span>
                             <span class="placeholder"><span class="placeholder">
-                           正如你所见,上面有三封信,我准备给你的.别点了,功能还没好,一来不知道要用那种方式展示.二来,我要说的话,每次都被你提前套出来了.lalalala. 
+                           三封信终于可以点了,可是你已经不在我身边.
+                           这三封信,也许你看见了,也许你从来没有登录来看过. 交给命运吧.
                        </span></br>
                        <span><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder"><span class="placeholder">-- yours, 吴昊</span>
              <!--        <span class="say"> Mr i = <span class="keyword">new</span> Mr(<span class="string">"Hao.Wu"</span>);</span>
@@ -94,14 +95,15 @@
 
        
                 <div id="clock-box">
-                   <a href="https://www.douban.com/people/36303538/" target="_blank">作作婷,小白眼,小巫师</a> 与 <a href="https://www.douban.com/people/47317039/" target="_blank">吴昊(UT10BF)</a> 在一起的
+                   <a href="https://www.douban.com/people/36303538/" target="_blank">小白眼傻傻婷</a> 与 <a href="https://www.douban.com/people/47317039/" target="_blank">吴昊(UT10BF)</a> 在一起的
                         <div id="clock"></div>
                 </div>
                 <canvas id="canvas" width="1100" height="680"></canvas>
                  <div id="qs">
                     
-                   <p>小谜语:UT10BF是什么意思呢?</p><input type="button" value="答案" onclick="doSomething();" />
-                   <p id = "midi" style="display:none;">谜底: UT10BF is short for Universal Top 10 Boy Friend</p>
+                   <p>小谜语:UT10BF是什么意思呢?</p>
+                <!--    <input type="button" value="答案" onclick="doSomething();" /> -->
+                   <p id = "midi" style="display:block;">谜底: UT10BF is short for UnTop 10 Boy Friend,看来U不是宇宙意思.我都没有保护好你.</p>
                </div>
          
             </div>
@@ -111,15 +113,44 @@
         </div>
     
     <script>
-         var num = Math.floor(Math.random() * 5);
-         var map_num = 520 + num;
-          document.getElementById("bgmMusic").src =
-              "./"+map_num+".mp3";
-
+         var num = Math.floor(Math.random() * 2);
+        
+         var map_num = 520+num;
+         
+          document.getElementById("bgmMusic").src = "./mp3/520.mp3"
+          // `./mp3/${map_num}.mp3`
+        
+             
+  
          function doSomething (){
               document.getElementById('midi').style.display = 'block';
               
          }
+         document.getElementById("letter1").addEventListener("click", function() {
+              var person=prompt("请输入密码(提示:门)","");
+              if(person=="331900"){
+                  window.open("/letter1");
+              }else{
+                 alert("连你家门密码都忘了吗?");
+              }
+          });
+           document.getElementById("letter2").addEventListener("click", function() {
+          var person=prompt("请输入密码(提示:在一起的时间 YYYY/MM/DD)","");
+          if(person=="2017/09/04"){
+              window.open("/letter2");
+          }else{
+             alert("2017/0*/0* 格式输错,请重来");
+          }
+          });
+        document.getElementById("letter3").addEventListener("click", function() {
+              var person=prompt("请输入密码(提示:给你唱的第一首歌的名字)","");
+              if(person=="晴天"){
+                  window.open("/letter3");
+              }else{
+                 alert("从前从前有个人爱你很久");
+              }
+          });
+   
     </script>
 
     <script>
@@ -259,7 +290,9 @@
             together.setSeconds(0);
             together.setMilliseconds(0);
             $("#letter").show();
-            $("#code").show().typewriter();
+            // 取消自动打印
+             $("#code").show();
+            // $("#code").show().typewriter();
             $("#qs").show();
             $("#clock-box").fadeIn(500);
             while (true) {
