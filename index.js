@@ -2,6 +2,7 @@ var express=require('express');
 var app=express();
 var path=require('path');
 const fs = require('fs');
+
 app.set('trust proxy', true)
 app.get('/',(req,res)=>{
 	res.sendFile(path.join(__dirname+'/Love.html'));
